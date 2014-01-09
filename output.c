@@ -170,6 +170,7 @@ static void alsa_close(snd_pcm_t *pcmp) {
 	if ((err = snd_pcm_close(pcmp)) < 0) {
 		LOG_INFO("snd_pcm_close error: %s", snd_strerror(err));
 	}
+        system("./sound_off_hook.sh");
 }
 
 static bool test_open(const char *device, u32_t *max_rate) {
@@ -383,6 +384,8 @@ static int alsa_open(snd_pcm_t **pcmp, const char *device, unsigned sample_rate,
 
 	// this indicates we have opened the device ok
 	alsa.rate = sample_rate;
+
+        system("./sound_on_hook.sh");
 
 	return 0;
 }
@@ -1519,6 +1522,7 @@ void output_init(log_level level, const char *device, unsigned output_buf_size, 
 			 alsa_sample_fmt ? alsa_sample_fmt : "any", alsa.mmap);
 
 	snd_lib_error_set_handler((snd_lib_error_handler_t)alsa_error_handler);
+        system("./sound_init_hook.sh");
 #endif
 
 #if PORTAUDIO

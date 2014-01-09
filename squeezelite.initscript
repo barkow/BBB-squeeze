@@ -20,7 +20,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Squeezelite Plaxer"
 NAME=squeezelite
 DAEMON=/usr/sbin/$NAME
-DAEMON_ARGS="-s squeezeboxserver.internal.barkow.name -n Badezimmer -o default:CARD=Device"
+DAEMON_ARGS="-s squeezeboxserver.internal.barkow.name -n Wohnzimmerzimmer -o default:CARD=Device"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
